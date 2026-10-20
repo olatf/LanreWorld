@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--primary);
+  --color-accent: var(--rose);
+}
+
+:root {
+  --background: #241633;
+  --foreground: #f3ece4;
+  --card: #33224a;
+  --muted-foreground: #b9a9cc;
+  --border: #4d396c;
+  --primary: #e9a93b;
+  --primary-foreground: #241633;
+  --rose: #c98ba3;
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Soft aurora behind the page */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: -1;
+  background:
+    radial-gradient(40rem 30rem at 15% 0%, rgb(201 139 163 / 0.3), transparent 60%),
+    radial-gradient(36rem 28rem at 90% 20%, rgb(233 169 59 / 0.14), transparent 60%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body::before {
+    animation: drift 24s ease-in-out infinite alternate;
+  }
+  main {
+    animation: settle 0.8s ease-out both;
+  }
+}
+
+@keyframes drift {
+  to {
+    transform: translate3d(-3%, 4%, 0) scale(1.06);
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
