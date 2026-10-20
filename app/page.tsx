@@ -7,6 +7,7 @@ import { VideoEmbed } from "@/components/video-embed";
 import { type RoleIcon, site } from "@/lib/site";
 import { getYouTubeData } from "@/lib/youtube";
 import { Clapperboard, Leaf, type LucideIcon, Mail, MapPin, Mic } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 
 const roleIcons: Record<RoleIcon, LucideIcon> = {
@@ -16,6 +17,22 @@ const roleIcons: Record<RoleIcon, LucideIcon> = {
 };
 
 const channelUrl = `https://www.youtube.com/@${site.youtube.handle}`;
+
+export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  title: `${site.name} | Links`,
+  description: site.description,
+  openGraph: {
+    title: site.name,
+    description: site.description,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.name,
+    description: site.description,
+  },
+};
 
 export default async function Home() {
   const youtube = await getYouTubeData();
