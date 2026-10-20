@@ -4,13 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { VideoCard } from "@/components/video-card";
 import { VideoEmbed } from "@/components/video-embed";
-import { revalidateMinutes } from "@/config/constant";
 import { type RoleIcon, site } from "@/lib/site";
 import { getYouTubeData } from "@/lib/youtube";
 import { Clapperboard, Leaf, type LucideIcon, Mail, MapPin, Mic } from "lucide-react";
 import Link from "next/link";
-
-export const revalidate = revalidateMinutes;
 
 const roleIcons: Record<RoleIcon, LucideIcon> = {
   mic: Mic,

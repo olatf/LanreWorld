@@ -1,4 +1,4 @@
-import { revalidateMinutes } from "@/config/constant";
+import { REVALIDATE_SECONDS } from "@/config/constant";
 import { site } from "@/lib/site";
 import { type YouTubeVideo, parseChannelPage, parseFeed } from "@/lib/youtube-parse";
 import consola from "consola";
@@ -20,7 +20,7 @@ const HEADERS = {
 async function fetchText(url: string) {
   const response = await fetch(url, {
     headers: HEADERS,
-    next: { revalidate: revalidateMinutes },
+    next: { revalidate: REVALIDATE_SECONDS },
     signal: AbortSignal.timeout(8000),
   });
   if (!response.ok) throw new Error(`${url} responded with ${response.status}`);
